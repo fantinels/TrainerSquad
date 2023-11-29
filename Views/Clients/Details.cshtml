@@ -1,0 +1,117 @@
+﻿@model TrainerSquad.Models.Client
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telephone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telephone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Personal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Personal.Name)
+        </dd>
+    </dl>
+
+    <h6>Payments:</h6>
+    <ul>
+        @foreach (var payment in Model.Payments)
+        {
+            <li>
+                @Html.DisplayNameFor(model => payment.Status):
+                @Html.DisplayFor(modelItem => payment.Status) 
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => payment.Price):
+                @Html.DisplayFor(modelItem => payment.Price) 
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => payment.PayDate):
+                @Html.DisplayFor(modelItem => payment.PayDate)
+            </li>
+        }
+    </ul>
+    <h6>Physical Assesment:</h6>
+    <ul>
+        @foreach (var physical in Model.PhysicalAssessments)
+        {
+            <li>
+                @Html.DisplayNameFor(model => physical.Weight):
+                @Html.DisplayFor(modelItem => physical.Weight)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => physical.Height):
+                @Html.DisplayFor(modelItem => physical.Height)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => physical.Imc):
+                @Html.DisplayFor(modelItem => physical.Imc)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => physical.PhysicalDate):
+                @Html.DisplayFor(modelItem => physical.PhysicalDate)
+            </li>
+            <li>
+                @Html.DisplayNameFor(model => physical.Client):
+                @Html.DisplayFor(modelItem => physical.Client.Name)
+            </li>
+        }
+    </ul>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

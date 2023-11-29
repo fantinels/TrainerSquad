@@ -1,0 +1,55 @@
+﻿@model TrainerSquad.Models.ViewModels.PersonalFormViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Personal</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Personal.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Personal.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Personal.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Personal.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Personal.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Personal.Email)
+        </dd>
+    </dl>
+
+    <h6>Equipments:</h6>
+    <ol>
+    @foreach (var equip in Model.Personal.Equipments)
+    {
+        <li>
+            @Html.DisplayFor(modelItem => equip.EquipmentName)
+        </li>
+    }
+    </ol>
+
+    <h6>Clients:</h6>
+    <ol>
+        @foreach (var client in Model.Personal.Clients)
+        {
+            <li>
+                @Html.DisplayFor(modelItem => client.Name)
+            </li>
+        }
+    </ol>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Personal.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

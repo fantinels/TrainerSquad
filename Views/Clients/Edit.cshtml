@@ -1,0 +1,74 @@
+﻿@model TrainerSquad.Models.ViewModels.ClientFormViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Client.Id" />
+            <div class="form-group">
+                <label asp-for="Client.Name" class="control-label"></label>
+                <input asp-for="Client.Name" class="form-control" />
+                <span asp-validation-for="Client.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Cpf" class="control-label"></label>
+                <input asp-for="Client.Cpf" class="form-control" />
+                <span asp-validation-for="Client.Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.BirthDate" class="control-label"></label>
+                <input asp-for="Client.BirthDate" class="form-control" />
+                <span asp-validation-for="Client.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Telephone" class="control-label"></label>
+                <input asp-for="Client.Telephone" class="form-control" />
+                <span asp-validation-for="Client.Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Gender" class="control-label"></label>
+                <select asp-for="Client.Gender" class="form-control" asp-items="Html.GetEnumSelectList<GenderStatus>()"></select>
+                <span asp-validation-for="Client.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Email" class="control-label"></label>
+                <input asp-for="Client.Email" class="form-control" />
+                <span asp-validation-for="Client.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Plan" class="control-label"></label>
+                <select asp-for="Client.Plan" class="form-control" asp-items="Html.GetEnumSelectList<PlanStatus>()"></select>
+                <span asp-validation-for="Client.Plan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Status" class="control-label"></label>
+                <select asp-for="Client.Status" class="form-control" asp-items="Html.GetEnumSelectList<ClientStatus>()"></select>
+                <span asp-validation-for="Client.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.PersonalId" class="control-label"></label>
+                <select asp-for="Client.PersonalId" class="form-control" asp-items="@(new SelectList(Model.Personals, "Id", "Name"))"></select>
+                <span asp-validation-for="Client.PersonalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
