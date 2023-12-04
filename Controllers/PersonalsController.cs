@@ -43,7 +43,7 @@ namespace TrainerSquad.Controllers
             var personal = await _context.Personal
                 .Include("Equipments")
                 .Include("Clients")
-                .Include("Schedule")
+                .Include("Schedules")
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (personal == null)
             {

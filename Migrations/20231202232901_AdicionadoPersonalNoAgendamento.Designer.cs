@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainerSquad.Data;
 
@@ -11,9 +12,10 @@ using TrainerSquad.Data;
 namespace TrainerSquad.Migrations
 {
     [DbContext(typeof(TrainerSquadContext))]
-    partial class TrainerSquadContextModelSnapshot : ModelSnapshot
+    [Migration("20231202232901_AdicionadoPersonalNoAgendamento")]
+    partial class AdicionadoPersonalNoAgendamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +67,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasIndex("PersonalId");
 
-                    b.ToTable("Client", (string)null);
+                    b.ToTable("Client");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.Equipment", b =>
@@ -93,7 +95,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasIndex("PersonalId");
 
-                    b.ToTable("Equipment", (string)null);
+                    b.ToTable("Equipment");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.Payment", b =>
@@ -120,7 +122,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Payment", (string)null);
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.Personal", b =>
@@ -145,7 +147,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Personal", (string)null);
+                    b.ToTable("Personal");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.PhysicalAssessment", b =>
@@ -175,7 +177,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("PhysicalAssessment", (string)null);
+                    b.ToTable("PhysicalAssessment");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.Schedule", b =>
@@ -204,7 +206,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasIndex("PersonalId");
 
-                    b.ToTable("Schedule", (string)null);
+                    b.ToTable("Schedule");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.Training", b =>
@@ -242,7 +244,7 @@ namespace TrainerSquad.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Training", (string)null);
+                    b.ToTable("Training");
                 });
 
             modelBuilder.Entity("TrainerSquad.Models.Client", b =>

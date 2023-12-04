@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q1OznoJExJPH+Js+PIFzpxXdgEDmw5FEBovIOlMX0VQ=",
+  "Hash": "doENEFc1HGtlnHnyphmVM0j3lmTzdPKREsSANAAOx1k=",
   "Source": "TrainerSquad",
   "BasePath": "_content/TrainerSquad",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\fanti\\source\\repos\\TrainerSquad\\wwwroot\\simbolo_azul_claro.png",
+      "SourceId": "TrainerSquad",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fanti\\source\\repos\\TrainerSquad\\wwwroot\\",
+      "BasePath": "_content/TrainerSquad",
+      "RelativePath": "simbolo_azul_claro.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\simbolo_azul_claro.png"
     }
   ]
 }

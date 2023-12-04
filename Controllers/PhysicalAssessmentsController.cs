@@ -84,7 +84,7 @@ namespace TrainerSquad.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit( PhysicalAssessment physicalAssessment)
+        public async Task<IActionResult> Edit(PhysicalAssessment physicalAssessment)
         {
             if (physicalAssessment == null)
             {
@@ -129,14 +129,14 @@ namespace TrainerSquad.Controllers
             {
                 _context.PhysicalAssessment.Remove(physicalAssessment);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PhysicalAssessmentExists(int id)
         {
-          return (_context.PhysicalAssessment?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.PhysicalAssessment?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

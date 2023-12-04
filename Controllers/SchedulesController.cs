@@ -23,7 +23,7 @@ namespace TrainerSquad.Controllers
         // GET: Schedules
         public async Task<IActionResult> Index()
         {
-            var trainerSquadContext = _context.Schedule.Include(s => s.Client);
+            var trainerSquadContext = _context.Schedule.Include(s => s.Client).Include(s => s.Personal);
             return View(await trainerSquadContext.ToListAsync());
         }
 
@@ -37,6 +37,7 @@ namespace TrainerSquad.Controllers
 
             var schedule = await _context.Schedule
                 .Include(s => s.Client)
+                .Include(s => s.Personal)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (schedule == null)
             {
@@ -51,11 +52,16 @@ namespace TrainerSquad.Controllers
         {
             var viewModel = new ScheduleFormViewModel();
             viewModel.Clients = _context.Client.ToList();
+            viewModel.Personals = _context.Personal.ToList();
 
             return View(viewModel);
         }
 
+        // POST: Schedules/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ScheduleFormViewModel scheduleFormViewModel)
         {
             _context.Add(scheduleFormViewModel.Schedule);
@@ -74,16 +80,22 @@ namespace TrainerSquad.Controllers
             }
 
             List<Client> clients = _context.Client.ToList();
+            List<Personal> personals = _context.Personal.ToList();
 
             ScheduleFormViewModel viewModel = new ScheduleFormViewModel();
 
             viewModel.Schedule = schedule;
             viewModel.Clients = clients;
+            viewModel.Personals = personals;
 
             return View(viewModel);
         }
 
+        // POST: Schedules/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Schedule schedule)
         {
             if (schedule == null)
@@ -106,6 +118,7 @@ namespace TrainerSquad.Controllers
 
             var schedule = await _context.Schedule
                 .Include(s => s.Client)
+                .Include(s => s.Personal)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (schedule == null)
             {

@@ -41,7 +41,7 @@ namespace TrainerSquad.Controllers
                 .Include(c => c.Personal)
                 .Include("Payments")
                 .Include("PhysicalAssessments")
-
+                .Include("Trainings")
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {

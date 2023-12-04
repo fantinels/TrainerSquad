@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
-    <h4>Client</h4>
+    <h4>Aluno</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -66,52 +66,109 @@
         </dd>
     </dl>
 
-    <h6>Payments:</h6>
-    <ul>
+    <h6 style="font-weight: bold;">Pagamentos:</h6>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 100px; margin: 10px; text-align: center;">Status</th>
+            <th style="width: 100px; margin: 10px; text-align: center;">Preço</th>
+            <th style="width: 200px; margin: 10px; text-align: center;">Data de Pagamento</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var payment in Model.Payments)
         {
-            <li>
-                @Html.DisplayNameFor(model => payment.Status):
-                @Html.DisplayFor(modelItem => payment.Status) 
-            </li>
-            <li>
-                @Html.DisplayNameFor(model => payment.Price):
-                @Html.DisplayFor(modelItem => payment.Price) 
-            </li>
-            <li>
-                @Html.DisplayNameFor(model => payment.PayDate):
-                @Html.DisplayFor(modelItem => payment.PayDate)
-            </li>
+            <tr>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => payment.Status)
+                </td>
+                <td style="text-align: center;">
+                    R$ @Html.DisplayFor(modelItem => payment.Price)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => payment.PayDate)
+                </td>
+            </tr>
         }
-    </ul>
-    <h6>Physical Assesment:</h6>
-    <ul>
+    </tbody>
+</table>
+<br />
+<h6 style="font-weight: bold;">Avaliações Físicas:</h6>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 100px; margin: 10px; text-align: center;">Peso</th>
+            <th style="width: 100px; margin: 10px; text-align: center;">Altura</th>
+            <th style="width: 100px; margin: 10px; text-align: center;">IMC</th>
+            <th style="width: 150px; margin: 10px; text-align: center;">Data da Avaliação</th>
+            <th style="width: 100px; margin: 10px; text-align: center;">Cliente</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var physical in Model.PhysicalAssessments)
         {
-            <li>
-                @Html.DisplayNameFor(model => physical.Weight):
-                @Html.DisplayFor(modelItem => physical.Weight)
-            </li>
-            <li>
-                @Html.DisplayNameFor(model => physical.Height):
-                @Html.DisplayFor(modelItem => physical.Height)
-            </li>
-            <li>
-                @Html.DisplayNameFor(model => physical.Imc):
-                @Html.DisplayFor(modelItem => physical.Imc)
-            </li>
-            <li>
-                @Html.DisplayNameFor(model => physical.PhysicalDate):
-                @Html.DisplayFor(modelItem => physical.PhysicalDate)
-            </li>
-            <li>
-                @Html.DisplayNameFor(model => physical.Client):
-                @Html.DisplayFor(modelItem => physical.Client.Name)
-            </li>
+            <tr>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => physical.Weight) Kg
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => physical.Height) cm
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => physical.Imc)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => physical.PhysicalDate)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => physical.Client.Name)
+                </td>
+            </tr>
         }
-    </ul>
+    </tbody>
+</table>
+<br />
+<h6 style="font-weight: bold;">Treinos:</h6>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 100px; margin: 10px; text-align: center;">Exercício</th>
+            <th style="width: 80px; margin: 10px; text-align: center;">Carga</th>
+            <th style="width: 80px; margin: 10px; text-align: center;">Série</th>
+            <th style="width: 120px; margin: 10px; text-align: center;">Repetição</th>
+            <th style="width: 150px; margin: 10px; text-align: center;">Observação</th>
+            <th style="width: 100px; margin: 10px; text-align: center;">Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var training in Model.Trainings)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => training.Exercise)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => training.Load) Kg
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => training.Serie)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => training.Repetition)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => training.Note)
+                </td>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => training.Type)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Voltar para Lista</a>
 </div>

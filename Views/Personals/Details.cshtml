@@ -3,7 +3,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
     <h4>Personal</h4>
@@ -29,27 +29,64 @@
         </dd>
     </dl>
 
-    <h6>Equipments:</h6>
-    <ol>
-    @foreach (var equip in Model.Personal.Equipments)
-    {
-        <li>
-            @Html.DisplayFor(modelItem => equip.EquipmentName)
-        </li>
-    }
-    </ol>
+    <h6 style="font-weight: bold;">Equipamentos:</h6>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 150px; margin: 10px; text-align: center;">Nome</th>
+                <th style="width: 150px; margin: 10px; text-align: center;">Status</th>
+                <th style="width: 200px; margin: 10px; text-align: center;">Última Manutenção</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var equip in Model.Equipments)
+            {
+                <tr>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => equip.EquipmentName)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => equip.Status)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => equip.LastMaintenance)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
 
-    <h6>Clients:</h6>
-    <ol>
-        @foreach (var client in Model.Personal.Clients)
-        {
-            <li>
-                @Html.DisplayFor(modelItem => client.Name)
-            </li>
-        }
-    </ol>
+    <h6 style="font-weight: bold;">Clientes:</h6>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 150px; margin: 10px; text-align: center;">Nome</th>
+                <th style="width: 100px; margin: 10px; text-align: center;">Plano</th>
+                <th style="width: 100px; margin: 10px; text-align: center;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model.Clients)
+            {
+                <tr>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => client.Name)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => client.Plan)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => client.Status)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Personal.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Personal.Id">Editar</a> |
+    <a asp-action="Index">Voltar para Lista</a>
 </div>
